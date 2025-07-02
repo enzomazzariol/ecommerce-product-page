@@ -113,12 +113,60 @@ main {
   margin-left: 30px;
 }
 
+.image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main-image {
   width: 400px;
   height: 400px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 30px;
+}
+
+.previous-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background-color: var(--white);
+    display: none;
+}
+
+.previous-button {
+    left: 15px;
+}
+
+.next-button {
+  right: 15px;
+}
+
+.previous-icon, .next-icon {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.previous-icon {
+    margin-right: 2px;
+}
+
+.next-icon {
+    margin-left: 2px;
 }
 
 .thumbnail-container {
@@ -225,13 +273,12 @@ h2 {
 
 .quantity-button-container {
   background-color: var(--light-grayish-blue);
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 130px;
-  height: 45px;
+  padding: 16px 30px;
   border-radius: 8px;
+  width: 161px;
 }
 
 .quantity-button {
@@ -258,10 +305,9 @@ h2 {
   cursor: pointer;
   gap: 10px;
   font-size: 14px;
-  padding: 12px 30px;
+  padding: 16px 60px;
   border-radius: 8px;
   font-weight: 700;
-  width: 250px;
 }
 
 .cart-icon-button {
@@ -395,6 +441,10 @@ h2 {
     max-width: none;
     border-radius: 0;
   }
+
+    .previous-button, .next-button {
+      display: block; 
+    }
 
   h2 {
     font-size: 32px;
