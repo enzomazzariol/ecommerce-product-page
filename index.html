@@ -15,7 +15,14 @@
 <body>
   <nav>
     <div class="nav-container">
-      <img src="./images/logo.svg" alt="Sneaker Company Logo" class="logo">
+      <div class="logo-container">
+        <button class="menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15">
+            <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="currentColor" fill-rule="evenodd" />
+          </svg>
+        </button>
+        <img src="./images/logo.svg" alt="Sneaker Company Logo" class="logo">
+    </div>
       <ul class="nav-links">
         <li class="nav-item"><a href="#" class="nav-link">Collections</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Men</a></li>
@@ -50,14 +57,18 @@
       </div>
       
       <div class="product-info">
-        <h1>SNEAKER COMPANY</h1>
-        <h2>Fall Limited Edition Sneakers</h2>
-        <p class="product-description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-        <div class="price-container">
-          <span class="current-price">$125.00</span>
-          <span class="discount">50%</span>
-          <div class="original-price-container">
-            <span class="original-price">$250.00</span>
+        <div class="product-details-container">
+          <h1>SNEAKER COMPANY</h1>
+          <h2>Fall Limited Edition Sneakers</h2>
+          <p class="product-description">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <div class="price-container">
+            <div>
+              <span class="current-price">$125.00</span>
+              <span class="discount">50%</span>
+            </div>
+            <div class="original-price-container">
+              <span class="original-price">$250.00</span>
+            </div>
           </div>
         </div>
         <div class="buttons-container">
