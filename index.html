@@ -26,7 +26,7 @@
       <ul class="nav-links">
         <li class="nav-item"><a href="#" class="nav-link">Collections</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Men</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Women</a></li>
+        <li class="nav-item"><a href="#" class="nav-link selected">Women</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
       </ul>
@@ -36,13 +36,35 @@
       </div>
   </div>
   </nav>
+
+  <!-- Cart -->
+  <div class="cart-container">
+    <div class="cart-header">
+      <h3 class="cart-title">Cart</h3>
+    </div>
+    <div class="cart-body">
+      <p class="cart-message">Your cart is empty.</p>
+      <div class="cart-item">
+        <img src="./images/image-product-1-thumbnail.jpg" alt="Product Image 1" class="cart-image">
+        <div class="cart-item-details">
+          <p class="cart-item-name">Fall Limited Edition Sneakers</p>
+          <p class="cart-item-price">$125.00 x <span class="cart-item-quantity">3</span> <span class="cart-item-total">  $375.00</span></p>
+
+        </div>
+        <button class="remove-button">
+          <img src="./images/icon-delete.svg" alt="Remove Item" class="remove-icon">
+        </button>
+      </div>
+      <button class="checkout-button">Checkout</button>
+    </div>
+  </div>
   
   <main>
     <section class="product-details">
       <div class="image-gallery">
         <div class="image-container">
           <button class="previous-button">
-            <img src="./images//icon-previous.svg" alt="Previous Image" class="previous-icon">
+            <img src="./images/icon-previous.svg" alt="Previous Image" class="previous-icon">
           </button>
           <img src="./images/image-product-1.jpg" alt="Product Image 1" class="main-image">
           <button class="next-button">
@@ -61,7 +83,8 @@
           </div>
           <div class="thumbnail-wrapper">
             <img src="./images/image-product-4-thumbnail.jpg" alt="Thumbnail 4" class="thumbnail" />
-          </div>  </div>
+          </div>  
+        </div>
       </div>
       
       <div class="product-info">
@@ -99,9 +122,10 @@
       </div>
     </section>
   </main>
-  <div class="attribution">
+  <section class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Enzo Mazzariol</a>.
-  </div>
+    Coded by <a href="https://github.com/enzomazzariol" target="_blank">Enzo Mazzariol</a>.
+  </section>
+  <script src="script.js"></script>
 </body>
 </html>
