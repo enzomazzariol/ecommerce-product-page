@@ -3,7 +3,18 @@ const thumbnails = document.querySelectorAll(".thumbnail-wrapper");
 const mainImage = document.querySelector(".main-image");
 const cartIcon = document.querySelector(".cart-icon");
 const cartContainer = document.querySelector(".cart-container");
+const decrementIcon = document.querySelector(".decrement-icon");
+const incrementIcon = document.querySelector(".increment-icon");
+const quantityNumber = document.querySelector(".quantity-number");
+const addToCartButton = document.querySelector(".add-to-cart");
+const cartMessage = document.querySelector(".cart-message");
+const cartItem = document.querySelector(".cart-item");
+const cartItemQuantity = document.querySelector(".cart-item-quantity");
+const checkoutButton = document.querySelector(".checkout-button");
+const cartItemTotal = document.querySelector(".cart-item-total");
+const cartItemCount = document.querySelector(".cart-item-count");
 
+// navbar interaction
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.forEach((l) => {
@@ -13,6 +24,7 @@ navLinks.forEach((link) => {
   });
 });
 
+// thumbnail interaction
 thumbnails.forEach((thumbnail) => {
   thumbnail.addEventListener("click", () => {
     thumbnails.forEach((t) => {
@@ -27,6 +39,46 @@ thumbnails.forEach((thumbnail) => {
       .alt.replace("Thumbnail", "Product Image");
   });
 });
+
+const incrementQuantity = () => {
+  quantityNumber.textContent = parseInt(quantityNumber.textContent) + 1;
+};
+
+const decrementQuantity = () => {
+  quantityNumber.textContent = Math.max(
+    0,
+    parseInt(quantityNumber.textContent) - 1
+  );
+};
+
+const addToCart = () => {
+  if (quantityNumber.textContent > 0) {
+    // Mostramos el item del carrito y ocultamos el mensaje
+    cartMessage.style.display = "none";
+    cartItem.style.display = "flex";
+    checkoutButton.style.display = "block";
+    cartItemCount.style.display = "flex";
+
+    // Actualizamos la cantidad y el total del item en el carrito
+    cartItemQuantity.textContent =
+      parseInt(cartItemQuantity.textContent) +
+      parseInt(quantityNumber.textContent);
+    cartItemTotal.textContent = `$${(
+      parseInt(cartItemQuantity.textContent) * 125
+    ).toFixed(2)}`;
+    cartItemCount.textContent = cartItemQuantity.textContent;
+
+    // Actualizamos a cero la cantidad del input
+    quantityNumber.textContent = 0;
+  } else {
+    cartMessage.style.display = "block";
+    cartItem.style.display = "none";
+  }
+};
+
+decrementIcon.addEventListener("click", decrementQuantity);
+incrementIcon.addEventListener("click", incrementQuantity);
+addToCartButton.addEventListener("click", addToCart);
 
 cartIcon.addEventListener("mouseenter", () => {
   cartContainer.classList.add("show");
