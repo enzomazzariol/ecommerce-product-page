@@ -13,6 +13,8 @@ const cartItemQuantity = document.querySelector(".cart-item-quantity");
 const checkoutButton = document.querySelector(".checkout-button");
 const cartItemTotal = document.querySelector(".cart-item-total");
 const cartItemCount = document.querySelector(".cart-item-count");
+const previousButtonImage = document.querySelector(".previous-button");
+const nextButtonImage = document.querySelector(".next-button");
 
 // navbar interaction
 navLinks.forEach((link) => {
@@ -38,6 +40,41 @@ thumbnails.forEach((thumbnail) => {
       .querySelector("img")
       .alt.replace("Thumbnail", "Product Image");
   });
+});
+
+// image gallery interaction
+const imagePaths = [
+  "./images/image-product-1.jpg",
+  "./images/image-product-2.jpg",
+  "./images/image-product-3.jpg",
+  "./images/image-product-4.jpg",
+];
+
+let currentImageIndex = 0;
+
+const updateMainImage = () => {
+  mainImage.src = imagePaths[currentImageIndex];
+  mainImage.alt = `Product Image ${currentImageIndex + 1}`;
+};
+
+previousButtonImage.addEventListener("click", () => {
+  currentImageIndex--;
+
+  if (currentImageIndex < 0) {
+    currentImageIndex = imagePaths.length - 1;
+  }
+
+  updateMainImage();
+});
+
+nextButtonImage.addEventListener("click", () => {
+  currentImageIndex++;
+
+  if (currentImageIndex >= imagePaths.length) {
+    currentImageIndex = 0;
+  }
+
+  updateMainImage();
 });
 
 const incrementQuantity = () => {
