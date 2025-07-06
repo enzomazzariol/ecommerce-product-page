@@ -15,6 +15,10 @@ const cartItemTotal = document.querySelector(".cart-item-total");
 const cartItemCount = document.querySelector(".cart-item-count");
 const previousButtonImage = document.querySelector(".previous-button");
 const nextButtonImage = document.querySelector(".next-button");
+const menuButtonMobile = document.querySelector(".menu-button");
+const mobileMenu = document.querySelector(".mobile-menu");
+const closeButtonMobile = document.querySelector(".close-menu");
+const mobileMenuOverlay = document.querySelector(".mobile-overlay");
 
 // navbar interaction
 navLinks.forEach((link) => {
@@ -123,4 +127,17 @@ cartIcon.addEventListener("mouseenter", () => {
 
 cartIcon.addEventListener("mouseleave", () => {
   cartContainer.classList.remove("show");
+});
+
+// menu mobile interaction
+menuButtonMobile.addEventListener("click", () => {
+  mobileMenu.classList.add("show");
+});
+
+closeButtonMobile.addEventListener("click", () => {
+  mobileMenu.classList.remove("show");
+});
+
+mobileMenuOverlay.addEventListener("click", () => {
+  mobileMenu.classList.remove("show");
 });
