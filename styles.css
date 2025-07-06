@@ -416,17 +416,17 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 27px;
+  gap: 25px;
 }
 
-.thumbnail-wrapper {
+.thumbnail-wrapper, .thumbnail-wrapper-lightbox {
   border: 2px solid transparent;
   border-radius: 8px;
   width: 82px;
   height: 81px;
 }
 
-.thumbnail-wrapper.selected {
+.thumbnail-wrapper.selected, .thumbnail-wrapper-lightbox.selected {
   border: 2px solid var(--orange);
 }
 
@@ -439,7 +439,7 @@ main {
   transition: transform 0.3s ease-in-out, opacity 0.3s ease;
 }
 
-.thumbnail-wrapper.selected .thumbnail {
+.thumbnail-wrapper.selected .thumbnail, .thumbnail-wrapper-lightbox.selected .thumbnail {
   opacity: 0.2;
 }
 
@@ -583,6 +583,108 @@ h2 {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+/* Lightbox */
+
+.lightbox-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease,
+  visibility 0.3s ease;
+}
+
+.lightbox-container.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.thumbnail-container-lightbox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-slide {
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.close-menu.mobile {
+  position: absolute;
+  filter: brightness(6);
+  cursor: pointer;
+  left: 63.5%;
+  top: 4%;
+}
+
+.previous-button.lightbox, .next-button.lightbox {
+    top: 45%;
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.previous-button.lightbox {
+  left: 33.5%;
+}
+
+.next-button.lightbox {
+  right: 33.5%;
+}
+
+.thumbnail-wrapper-lightbox {
+  border-radius: 8px;
+  width: 71px;
+  height: 71px;
+}
+
+.thumbnail.lightbox {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* MEDIA QUERIES */

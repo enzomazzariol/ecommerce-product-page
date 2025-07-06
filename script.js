@@ -19,6 +19,46 @@ const menuButtonMobile = document.querySelector(".menu-button");
 const mobileMenu = document.querySelector(".mobile-menu");
 const closeButtonMobile = document.querySelector(".close-menu");
 const mobileMenuOverlay = document.querySelector(".mobile-overlay");
+const lightbox = document.querySelector(".lightbox-container");
+const lightboxOverly = document.querySelector(".lightbox-overlay");
+const closeButtonLightbox = document.querySelector(".close-menu-lightbox");
+const mainImageLightbox = document.querySelector(".image-slide");
+const thumbnailLightbox = document.querySelectorAll(
+  ".thumbnail-wrapper-lightbox"
+);
+const previousButtonLightbox = document.querySelector(
+  ".previous-button.lightbox"
+);
+const nextButtonLightbox = document.querySelector(".next-button.lightbox");
+
+// lightbox interaction
+mainImage.addEventListener("click", () => {
+  lightbox.classList.add("show");
+});
+
+lightboxOverly.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+});
+
+closeButtonLightbox.addEventListener("click", () => {
+  lightbox.classList.remove("show");
+});
+
+// thumbnail lightbox interaction
+thumbnailLightbox.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", () => {
+    thumbnailLightbox.forEach((t) => {
+      t.classList.remove("selected");
+    });
+    thumbnail.classList.add("selected");
+    mainImageLightbox.src = thumbnail
+      .querySelector("img")
+      .src.replace("-thumbnail", "");
+    mainImageLightbox.alt = thumbnail
+      .querySelector("img")
+      .alt.replace("Thumbnail", "Product Image");
+  });
+});
 
 // navbar interaction
 navLinks.forEach((link) => {
@@ -55,31 +95,29 @@ const imagePaths = [
 ];
 
 let currentImageIndex = 0;
+let currentImageIndexLightbox = 0;
 
 const updateMainImage = () => {
   mainImage.src = imagePaths[currentImageIndex];
   mainImage.alt = `Product Image ${currentImageIndex + 1}`;
 };
 
-previousButtonImage.addEventListener("click", () => {
-  currentImageIndex--;
+const updateMainImageLightbox = () => {
+  mainImageLightbox.src = imagePaths[currentImageIndexLightbox];
+  mainImageLightbox.alt = `Product Image ${currentImageIndexLightbox + 1}`;
 
-  if (currentImageIndex < 0) {
-    currentImageIndex = imagePaths.length - 1;
-  }
-
-  updateMainImage();
-});
-
-nextButtonImage.addEventListener("click", () => {
-  currentImageIndex++;
-
-  if (currentImageIndex >= imagePaths.length) {
-    currentImageIndex = 0;
-  }
-
-  updateMainImage();
-});
+  thumbnailLightbox.forEach((thumbnail, index) => {
+    thumbnail.classList.remove("selected");
+    if (index === currentImageIndexLightbox) {
+      thumbnail.classList.add("selected");
+    }
+    thumbnail.querySelector("img").src = imagePaths[index].replace(
+      ".jpg",
+      "-thumbnail.jpg"
+    );
+    thumbnail.querySelector("img").alt = `Thumbnail ${index + 1}`;
+  });
+};
 
 const incrementQuantity = () => {
   quantityNumber.textContent = parseInt(quantityNumber.textContent) + 1;
@@ -140,4 +178,44 @@ closeButtonMobile.addEventListener("click", () => {
 
 mobileMenuOverlay.addEventListener("click", () => {
   mobileMenu.classList.remove("show");
+});
+
+previousButtonLightbox.addEventListener("click", () => {
+  currentImageIndexLightbox--;
+
+  if (currentImageIndexLightbox < 0) {
+    currentImageIndexLightbox = imagePaths.length - 1;
+  }
+
+  updateMainImageLightbox();
+});
+
+nextButtonLightbox.addEventListener("click", () => {
+  currentImageIndexLightbox++;
+
+  if (currentImageIndexLightbox >= imagePaths.length) {
+    currentImageIndexLightbox = 0;
+  }
+
+  updateMainImageLightbox();
+});
+
+previousButtonImage.addEventListener("click", () => {
+  currentImageIndex--;
+
+  if (currentImageIndex < 0) {
+    currentImageIndex = imagePaths.length - 1;
+  }
+
+  updateMainImage();
+});
+
+nextButtonImage.addEventListener("click", () => {
+  currentImageIndex++;
+
+  if (currentImageIndex >= imagePaths.length) {
+    currentImageIndex = 0;
+  }
+
+  updateMainImage();
 });
