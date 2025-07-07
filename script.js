@@ -13,6 +13,7 @@ const cartItemQuantity = document.querySelector(".cart-item-quantity");
 const checkoutButton = document.querySelector(".checkout-button");
 const cartItemTotal = document.querySelector(".cart-item-total");
 const cartItemCount = document.querySelector(".cart-item-count");
+const removeCartItem = document.querySelector(".remove-button");
 const previousButtonImage = document.querySelector(".previous-button");
 const nextButtonImage = document.querySelector(".next-button");
 const menuButtonMobile = document.querySelector(".menu-button");
@@ -20,7 +21,7 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const closeButtonMobile = document.querySelector(".close-menu");
 const mobileMenuOverlay = document.querySelector(".mobile-overlay");
 const lightbox = document.querySelector(".lightbox-container");
-const lightboxOverly = document.querySelector(".lightbox-overlay");
+const lightboxOverlay = document.querySelector(".lightbox-overlay");
 const closeButtonLightbox = document.querySelector(".close-menu-lightbox");
 const mainImageLightbox = document.querySelector(".image-slide");
 const thumbnailLightbox = document.querySelectorAll(
@@ -32,17 +33,27 @@ const previousButtonLightbox = document.querySelector(
 const nextButtonLightbox = document.querySelector(".next-button.lightbox");
 
 // lightbox interaction
-mainImage.addEventListener("click", () => {
-  lightbox.classList.add("show");
-});
-
-lightboxOverly.addEventListener("click", () => {
+lightboxOverlay.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
 
 closeButtonLightbox.addEventListener("click", () => {
   lightbox.classList.remove("show");
 });
+
+const handleResponsiveLightbox = () => {
+  mainImage.onclick = null;
+
+  if (window.innerWidth >= 557) {
+    mainImage.onclick = () => lightbox.classList.add("show");
+  } else {
+    lightbox.classList.remove("show");
+  }
+};
+
+// Ejecutar al cargar y al redimensionar
+window.addEventListener("load", handleResponsiveLightbox);
+window.addEventListener("resize", handleResponsiveLightbox);
 
 // thumbnail lightbox interaction
 thumbnailLightbox.forEach((thumbnail) => {
@@ -155,15 +166,31 @@ const addToCart = () => {
   }
 };
 
+const removeCartItemFromCart = () => {
+  cartItem.style.display = "none";
+  checkoutButton.style.display = "none";
+  cartItemCount.style.display = "none";
+  cartItemQuantity.textContent = 0;
+  cartMessage.style.display = "block";
+  cartItemCount.textContent = cartItemQuantity.textContent;
+  quantityNumber.textContent = 0;
+};
+
 decrementIcon.addEventListener("click", decrementQuantity);
 incrementIcon.addEventListener("click", incrementQuantity);
 addToCartButton.addEventListener("click", addToCart);
+removeCartItem.addEventListener("click", removeCartItemFromCart);
 
-cartIcon.addEventListener("mouseenter", () => {
-  cartContainer.classList.add("show");
+cartIcon.addEventListener("click", (e) => {
+  e.stopPropagation();
+  cartContainer.classList.toggle("show");
 });
 
-cartIcon.addEventListener("mouseleave", () => {
+cartContainer.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+document.addEventListener("click", () => {
   cartContainer.classList.remove("show");
 });
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css">
@@ -26,8 +26,8 @@
         <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Contact</a></li>
       </ul>
     </div>
-    
   </div>
+  <!-- Desktop Nav -->
   <nav>
     <div class="nav-container">
       <div class="logo-container">
@@ -40,8 +40,8 @@
     </div>
       <ul class="nav-links">
         <li class="nav-item"><a href="#" class="nav-link">Collections</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Men</a></li>
-        <li class="nav-item"><a href="#" class="nav-link selected">Women</a></li>
+        <li class="nav-item"><a href="#" class="nav-link selected">Men</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Women</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
       </ul>
@@ -78,6 +78,7 @@
   </div>
   
   <main>
+    <!-- Product Details -->
     <section class="product-details">
       <div class="image-gallery">
         <div class="image-container">
@@ -109,7 +110,9 @@
       <section class="lightbox-container">
         <div class="lightbox-overlay"></div>
         <div class="modal">
-          <img src="./images/icon-close.svg" alt="Close Menu" class="close-menu close-menu-lightbox mobile">
+          <div style="position: relative;">
+            <img src="./images/icon-close.svg" alt="Close Menu" class="close-menu close-menu-lightbox mobile">
+          </div>
           <div class="modal-content">
             <div class="slide">
               <button class="previous-button lightbox">

@@ -329,6 +329,10 @@ nav {
     font-family: "Kumbh Sans", sans-serif;
 }
 
+.checkout-button:hover {
+    background-color: hsla(26, 100%, 55%, 0.6);
+}
+
 /* MAIN */
 
 main {
@@ -390,7 +394,7 @@ main {
 }
 
 .previous-button {
-    left: 15px;
+  left: 15px;
 }
 
 .next-button {
@@ -398,17 +402,19 @@ main {
 }
 
 .previous-icon, .next-icon {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
     object-fit: contain;
 }
 
 .previous-icon {
     margin-right: 2px;
+    margin-top: 3px;
 }
 
 .next-icon {
     margin-left: 2px;
+    margin-top: 3px;
 }
 
 .thumbnail-container {
@@ -654,23 +660,27 @@ h2 {
   position: absolute;
   filter: brightness(6);
   cursor: pointer;
-  left: 63.5%;
-  top: 4%;
+  left: 205px;;
+  top: -20px;
+}
+
+.slide {
+  position: relative;
 }
 
 .previous-button.lightbox, .next-button.lightbox {
-    top: 45%;
+    top: 51%;
     display: flex;
     width: 50px;
     height: 50px;
 }
 
 .previous-button.lightbox {
-  left: 33.5%;
+  left: -22px;
 }
 
 .next-button.lightbox {
-  right: 33.5%;
+  right: -22px;
 }
 
 .thumbnail-wrapper-lightbox {
@@ -802,6 +812,7 @@ h2 {
     height: 340px;
     max-width: none;
     border-radius: 0;
+    cursor: auto;
   }
 
     .previous-button, .next-button {
@@ -905,6 +916,10 @@ h2 {
     font-size: 20px;
     width: 86%;
     padding: 22px 0
+  }
+
+  .lightbox-container {
+    display: none;
   }
 }
 
